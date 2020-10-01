@@ -3,6 +3,7 @@ import axios from 'axios';
 import {Container,CardGrid} from "./MyBlog.styles";
 import SearchField from "components/SearchField";
 import Card from "components/Card";
+import AddModal from "components/AddModal";
 
 
 
@@ -10,7 +11,7 @@ const MyBlog=()=>{
     const [filteredItems,setFilteredItems]=useState([]);
     const [items,setItems]=useState([]);
     const [inputValue,setInputValue]=useState("");
-    console.log(filteredItems);
+    const [displayModal,setDisplayModal]=useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -46,10 +47,12 @@ const MyBlog=()=>{
             setFilteredItems([]);
             setInputValue(value);
         } };
+
     return(
         <Container>
-            <h1 > My Blog</h1>
+            <h1> My Blog</h1>
             <SearchField  value={inputValue} handleChange={handleChange}/>
+            <button type={"button"} onClick={()=>setDisplayModal(true)}>Add item</button>
             <CardGrid>
                 {filteredItems[0]?(filteredItems.map((item,index)=>
                 <Card key={index} 
@@ -65,6 +68,10 @@ const MyBlog=()=>{
                 itemId={item.id}/>))
                 }
             </CardGrid>
+            <AddModal displayModal={displayModal} 
+                    setDisplayModal={setDisplayModal}
+                    items={items}
+                    setItems={setItems}/>
         </Container>
     )
 };
