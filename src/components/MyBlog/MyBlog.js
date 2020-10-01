@@ -56,12 +56,16 @@ const MyBlog=()=>{
             <CardGrid>
                 {filteredItems[0]?(filteredItems.map((item,index)=>
                 <Card key={index} 
+                items={items}
+                setItems={setItems}
                 gridArea={index}
                 title={item.title}
                 body={item.body} 
                 itemId={item.id}/>)):
                 (items.map((item,index)=>
                 <Card key={index} 
+                items={items}
+                setItems={setItems}
                 gridArea={index}
                 title={item.title}
                 body={item.body} 
