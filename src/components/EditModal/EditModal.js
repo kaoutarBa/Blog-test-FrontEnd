@@ -29,7 +29,6 @@ const EditModal=({
         });        
         setItems([...newItems]);
         setDisplayModal(false);
-       
     };
     const handleCancel=()=>{
         setDisplayModal(false);
